@@ -3,7 +3,7 @@ module alunb(
 	input [2:0] sel,
 	input clk,
 	output reg [31:0] r,
-	output reg zf
+	output zf
 );
 	always @(posedge clk)
 	begin
