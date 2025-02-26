@@ -8,35 +8,14 @@ module alunb(
 	always @(posedge clk)
 	begin
 		case (sel)
-			3'b000:
-			begin
-				r <= a + b;
-			end
-			3'b001:
-			begin
-				r <= a & b;
-			end
-			3'b010:
-			begin
-				r <= a | b;
-			end
-			3'b011:
-			begin
-				r <= a * b;
-			end
-			3'b100:
-			begin
-				r <= a - b;
-			end
-			3'b101:
-			begin
-				r <= a < b ? 1 : 0;
-			end
-			default:
-			begin
-				r <= 32'b0;
-			end
+			3'd0: r <= a + b;
+			3'd1: r<= a & b;
+			3'd2: r <= a | b;
+			3'd3: r <= a * b;
+			3'd4: r <= a - b;
+			3'd5: r <= a < b ? 32'b1 : 32'b0;
+			default: r <= 32'b0;
 		endcase
-		zf <= r ? 0 : 1;
 	end
+	assign zf = !r;
 endmodule
